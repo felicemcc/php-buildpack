@@ -373,8 +373,11 @@ class ComposerCommandRunner(object):
                                       [env.get('PATH', ''),
                                        os.path.dirname(self._php_path),
                                        os.path.join(self._ctx['COMPOSER_HOME'], 'bin')]))
-        for key, val in env.iteritems():
-            self._log.debug("ENV IS: %s=%s (%s)", key, val, type(val))
+        # To avoid leaking Cloudfoundry credentials, which might be setup via the Cloudfoundry secrets and present on
+        # the VCAP_SERVICES details
+        if env['BP_DEBUG']:
+            for key, val in env.iteritems():
+                self._log.debug("ENV IS: %s=%s (%s)", key, val, type(val))
 
         return env
 
