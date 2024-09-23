@@ -375,6 +375,7 @@ class ComposerCommandRunner(object):
                                        os.path.join(self._ctx['COMPOSER_HOME'], 'bin')]))
         # To avoid leaking Cloudfoundry credentials, which might be setup via the Cloudfoundry secrets and present on
         # the VCAP_SERVICES details
+        self._log.debug("FMCC FULL ENV IS: (%s)", env)
         if env.get('BP_DEBUG') is True:
             self._log.debug("FMCC ENV IS: (%s)", env['BP_DEBUG'])
             self._log.debug("FMCC ENV TYPE IS: (%s)", type(env['BP_DEBUG']))

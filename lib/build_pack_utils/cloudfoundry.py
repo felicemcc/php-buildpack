@@ -58,6 +58,10 @@ class CloudFoundryUtil(object):
         _log.info('CloudFoundry Initialized.')
         # To avoid leaking Cloudfoundry credentials, which might be setup via the Cloudfoundry secrets and present on
         # the VCAP_SERVICES details
+        _log.debug("FMCC CloudFoundry 'BP_DEBUG' coming from manifest env [%s]", ctx.get('BP_DEBUG'))
+        _log.debug("FMCC CloudFoundry 'BP_DEBUG' coming from manifest env TYPE [%s]", type(ctx.get('BP_DEBUG')))
+        _log.debug("FMCC CloudFoundry SHOULD I CONVERT??? 'BP_DEBUG' coming from manifest env TYPE [%s]", bool(ctx.get('BP_DEBUG')))
+
         if ctx.get('BP_DEBUG') is True:
             _log.debug("CloudFoundry Context Setup [%s]", ctx)
 
@@ -96,7 +100,7 @@ class CloudFoundryUtil(object):
     @staticmethod
     def init_logging(ctx):
         logFmt = '%(asctime)s [%(levelname)s] %(name)s - %(message)s'
-        if ctx.get('BP_DEBUG', False):
+        if ctx.get('BP_DEBUG', False) is True:
             logging.basicConfig(level=logging.DEBUG, format=logFmt)
         else:
             logLevelStr = ctx.get('BP_LOG_LEVEL', 'INFO')
