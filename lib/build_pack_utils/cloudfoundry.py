@@ -58,7 +58,7 @@ class CloudFoundryUtil(object):
         _log.info('CloudFoundry Initialized.')
         # To avoid leaking Cloudfoundry credentials, which might be setup via the Cloudfoundry secrets and present on
         # the VCAP_SERVICES details
-        if ctx.get('BP_DEBUG'):
+        if ctx.get('BP_DEBUG') is True:
             _log.debug("CloudFoundry Context Setup [%s]", ctx)
 
         # get default PHP, httpd, and nginx versions from manifest

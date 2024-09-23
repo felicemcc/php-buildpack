@@ -378,10 +378,10 @@ class ComposerCommandRunner(object):
         # FIXME
         # env['BP_DEBUG'] = self._ctx['BP_DEBUG']
         self._log.debug("BEFORE FMCC ENV IS: (%s)", self._ctx.get('BP_DEBUG', False))
-        # if env['BP_DEBUG']:
-        #     self._log.debug("FMCC ENV IS: (%s)", env['BP_DEBUG'])
-        #     for key, val in env.iteritems():
-        #         self._log.debug("ENV IS: %s=%s (%s)", key, val, type(val))
+        if env['BP_DEBUG'] != 0:
+            self._log.debug("FMCC ENV IS: (%s)", env['BP_DEBUG'])
+            for key, val in env.iteritems():
+                self._log.debug("ENV IS: %s=%s (%s)", key, val, type(val))
 
         return env
 
