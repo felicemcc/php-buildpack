@@ -58,6 +58,7 @@ class CloudFoundryUtil(object):
         _log.info('CloudFoundry Initialized.')
         # FIXME To avoid leaking Cloudfoundry credentials, which might be setup via the Cloudfoundry secrets and present on
         # the VCAP_SERVICES details
+        _log.debug("FMCC [%s]", ctx.get('BP_DEBUG'))
         # if ctx.get('BP_DEBUG', False):
         #     _log.debug("CloudFoundry Context Setup [%s]", ctx)
 
