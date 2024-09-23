@@ -376,14 +376,15 @@ class ComposerCommandRunner(object):
         # To avoid leaking Cloudfoundry credentials, which might be setup via the Cloudfoundry secrets and present on
         # the VCAP_SERVICES details
         # FIXME
-        self._log.debug("PRIMIGENIO FMCC ENV IS: (%s)", self._ctx.get('BP_DEBUG', "LA VERGA NOT SET"))
-        self._log.debug("SEGUNGENIO FMCC ENV IS: (%s)", env.get('BP_DEBUG', "LA VERGA 2 NOT SET"))
-        env['BP_DEBUG'] = self._ctx.get('BP_DEBUG', "LA VERGA NOT SET")
-        self._log.debug("BEFORE FMCC ENV IS: (%s)", env['BP_DEBUG'])
-        if env['BP_DEBUG'] is True:
-            self._log.debug("FMCC ENV IS: (%s)", env['BP_DEBUG'])
-            for key, val in env.iteritems():
-                self._log.debug("ENV IS: %s=%s (%s)", key, val, type(val))
+        self._log.debug("FMCC OS ENV KEYS: (%s)", os.environ.keys())
+        self._log.debug("FMCC ENV VAR KEYS: (%s)", env.keys())
+        # self._log.debug("SEGUNGENIO FMCC ENV IS: (%s)", env.get('BP_DEBUG', "LA VERGA 2 NOT SET"))
+        # env['BP_DEBUG'] = self._ctx.get('BP_DEBUG', "LA VERGA NOT SET")
+        # self._log.debug("BEFORE FMCC ENV IS: (%s)", env['BP_DEBUG'])
+        # if env['BP_DEBUG'] is True:
+        #     self._log.debug("FMCC ENV IS: (%s)", env['BP_DEBUG'])
+        #     for key, val in env.iteritems():
+        #         self._log.debug("ENV IS: %s=%s (%s)", key, val, type(val))
 
         return env
 
